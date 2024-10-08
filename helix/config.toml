@@ -11,9 +11,9 @@ git-ignore = false
 insert = "bar"
 normal = "block"
 select = "underline"
-[editor.lsp]
-display-inlay-hints = true
-auto-signature-help = true
+# [editor.lsp]
+# display-inlay-hints = true
+# auto-signature-help = true
 
 [keys.normal]
 "C-v" = "copilot_toggle_auto_render"
