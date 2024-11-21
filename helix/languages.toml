@@ -1,27 +1,22 @@
-[language-server.pyright]
-command = "pyright-langserver"
+[language-server.copilot]
+command = "copilot"
 args = ["--stdio"]
-
-[language-server.ruff]
-command = "ruff-lsp"
-config = {}
-
-[language-server.rust-analyzer]
-command = "rust-analyzer"
 
 [[language]]
 name = "python"
 roots = ["pyproject.toml", "pyrightconfig.json"]
 language-servers = ["pyright"]
 auto-format = true
-# formatter = { command = "bash", args = [
-#   "-c",
-#   "ruff check - --fix -n | ruff format -",
-# ] }
 formatter = { command = "bash", args = [
   "-c",
   "autoflake --in-place --remove-all-unused-imports -| autopep8 --aggressive --aggressive --max-line-length=120 -",
 ] }
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+[language-server.ruff]
+command = "ruff-lsp"
+config = {}
 
 [[language]]
 name = "toml"
@@ -33,6 +28,9 @@ name = "rust"
 auto-format = true
 roots = ["Cargo.toml", "Cargo.lock"]
 language-servers = ["rust-analyzer"]
+formatter = { command = "rustfmt" }
+[language-server.rust-analyzer]
+command = "rust-analyzer"
 
 [language.auto-pairs]
 '(' = ')'
@@ -40,3 +38,4 @@ language-servers = ["rust-analyzer"]
 '[' = ']'
 '"' = '"'
 '`' = '`'
+'<' = '>'
