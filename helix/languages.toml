@@ -28,9 +28,21 @@ name = "rust"
 auto-format = true
 roots = ["Cargo.toml", "Cargo.lock"]
 language-servers = ["rust-analyzer"]
-formatter = { command = "rustfmt" }
+formatter = { command = "rustfmt", args = ["--edition", "2021"] }
 [language-server.rust-analyzer]
 command = "rust-analyzer"
+
+[[language]]
+name = "json"
+auto-format = true
+# roots = ["Cargo.toml", "Cargo.lock"]
+language-servers = ["vscode-json-languageserver"]
+formatter = { command = "biome", args = [
+  "format",
+  "--stdin-file-path=output.json",
+] }
+[language-server.vscode-json-languageserver]
+command = "vscode-json-languageserver"
 
 [language.auto-pairs]
 '(' = ')'
